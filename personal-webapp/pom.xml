@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.amith.personal</groupId>
@@ -8,10 +9,160 @@
 	</parent>
 	<artifactId>personal-webapp</artifactId>
 	<packaging>pom</packaging>
+
+	<dependencies>
+	    
+	    <!-- DDD -->
+	    <dependency>
+	        <groupId>com.amith</groupId>
+	        <artifactId>provider-spring</artifactId>
+	    </dependency>
+	    <dependency>
+	        <groupId>com.amith</groupId>
+	        <artifactId>repository-hibernate</artifactId>
+	    </dependency>
+
+	    <!-- PERSONAL-MANAGE -->
+	    <dependency>
+	        <groupId>com.amith.personal</groupId>
+	        <artifactId>personal-core</artifactId>
+	        <version>1.0-SNAPSHOT</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>com.amith.personal</groupId>
+	        <artifactId>personal-security</artifactId>
+	        <version>1.0-SNAPSHOT</version>
+	    </dependency>
+	    
+	</dependencies>
 	
-  <modules>
-    <module>personal-web-struts2</module>
-    <module>personal-web-springmvc</module>
-    <module>personal-web-vaadin</module>
-  </modules>
+	<properties>
+	    <dbunit.data.file>src/test/resources/sample-data.xml</dbunit.data.file>
+	</properties>
+	
+	<build>
+		<finalName>personal-manage</finalName>
+		<plugins>
+			<!--<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>hibernate3-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<components>
+						<component>
+							<name>hbm2ddl</name>
+							<implementation>annotationconfiguration</implementation>
+						</component>
+					</components>
+					<componentProperties>
+						<update>true</update>
+						<create>true</create>
+						<jdk5>true</jdk5>
+						<scan-classes>true</scan-classes>
+						<scan-jars>true</scan-jars>
+						<configurationfile>target/test-classes/hibernate.cfg.xml</configurationfile>
+						<skip>${maven.test.skip}</skip>
+					</componentProperties>
+				</configuration>
+				<executions>
+					<execution>
+						<id>create-schema</id>
+						<goals>
+							<goal>hbm2ddl</goal>
+						</goals>
+						<phase>pre-integration-test</phase>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>${jdbc.groupId}</groupId>
+						<artifactId>${jdbc.artifactId}</artifactId>
+						<version>${jdbc.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>net.sourceforge.cobertura</groupId>
+						<artifactId>cobertura</artifactId>
+						<version>1.9.4.1</version>
+					</dependency>
+					<dependency>
+						<groupId>org.hibernate</groupId>
+						<artifactId>hibernate-validator</artifactId>
+						<version>4.2.0.Final</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<plugin>
+			    <groupId>org.codehaus.mojo</groupId>
+			    <artifactId>dbunit-maven-plugin</artifactId>
+			    <version>1.0-beta-3</version>
+			    <configuration>
+					<dataTypeFactoryName>${dbunit.dataTypeFactoryName}</dataTypeFactoryName>
+					<driver>${jdbc.driverClassName}</driver>
+					<url>${jdbc.url}</url>
+					<username>${jdbc.username}</username>
+					<password>${jdbc.password}</password>
+					<schema>${dbunit.schema}</schema>
+					<skip>${maven.test.skip}</skip>
+					<src>${dbunit.data.file}</src>
+					<type>${dbunit.operation.type}</type>
+					<ordered>true</ordered>
+					<format>flat</format>
+					<encoding>${charset}</encoding>
+					<doctype>dataset.dtd</doctype>
+				</configuration>
+				<executions>
+					<execution>
+						<id>fill-test-data</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>operation</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>export</id>
+						<goals>
+							<goal>export</goal>
+						</goals>
+						<configuration>
+							<doctype>${basedir}/target/dbunit/dataset.dtd</doctype>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>${jdbc.groupId}</groupId>
+						<artifactId>${jdbc.artifactId}</artifactId>
+						<version>${jdbc.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin> -->
+			
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>8.1.8.v20121106</version>
+				<configuration>
+					<webAppConfig>
+						<contextPath>/${cargo.context}</contextPath>
+					</webAppConfig>
+					<connectors>
+						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+							<port>${cargo.port}</port>
+							<maxIdleTime>60000</maxIdleTime>
+						</connector>
+					</connectors>
+					<scanIntervalSeconds>0</scanIntervalSeconds>
+					<jvmArgs>-Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=512m
+						-Dfile.encoding=UTF-8</jvmArgs>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<modules>
+		<module>personal-web-struts2</module>
+		<module>personal-web-springmvc</module>
+		<module>personal-web-vaadin</module>
+	</modules>
+
 </project>

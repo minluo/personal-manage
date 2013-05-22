@@ -1,0 +1,26 @@
+<!ELEMENT dataset (
+    users*,
+    dictionaries*
+    )>
+
+<!ELEMENT users EMPTY>
+<!ATTLIST users
+    id CDATA #REQUIRED
+    version CDATA #REQUIRED
+    username CDATA #IMPLIED
+    password CDATA #IMPLIED
+    email CDATA #IMPLIED
+    mobile CDATA #IMPLIED
+    create_date CDATA #IMPLIED
+    activated CDATA #IMPLIED
+    usabled CDATA #IMPLIED
+>
+
+<!ELEMENT dictionaries EMPTY>
+<!ATTLIST dictionaries
+    id CDATA #REQUIRED
+    version CDATA #REQUIRED
+    text CDATA #IMPLIED
+    category CDATA #IMPLIED
+    sort_num CDATA #IMPLIED
+>

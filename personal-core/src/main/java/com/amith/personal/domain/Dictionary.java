@@ -16,7 +16,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  * 
  */
 @Entity
-@Table(name = "dictionarys")
+@Table(name = "dictionaries")
 public class Dictionary extends PersonalAggregateRootEntity {
 
 	private static final long serialVersionUID = 1L;
@@ -26,16 +26,14 @@ public class Dictionary extends PersonalAggregateRootEntity {
 	private DictionaryCategory category;
 
 	private int sortNum;
-	
+
 	public Dictionary(String text, DictionaryCategory category, int sortNum) {
 		this.text = text;
 		this.category = category;
 		this.sortNum = sortNum;
 	}
 
-	public Dictionary() {
-		super();
-	}
+	public Dictionary() {}
 
 	@Column(nullable = false)
 	public String getText() {
@@ -46,6 +44,7 @@ public class Dictionary extends PersonalAggregateRootEntity {
 		this.text = text;
 	}
 
+	@Column(name = "sort_num")
 	public int getSortNum() {
 		return sortNum;
 	}

@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.amith.domain.AggregateRootEntity;
 import com.amith.query.QueryObject;
@@ -33,7 +35,7 @@ public class User extends AggregateRootEntity {
 
 	private boolean activated = false;
 
-	private boolean usabled = false;
+	private boolean usabled = true;
 
 	public User(String username, String password) {
 		this.username = username;
@@ -42,6 +44,8 @@ public class User extends AggregateRootEntity {
 		this.createDate = new Date();
 	}
 
+	public User() {}
+	
 	/**
 	 * 激活用户
 	 */
@@ -120,6 +124,8 @@ public class User extends AggregateRootEntity {
 		this.mobile = mobile;
 	}
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "create_date")
 	public Date getCreateDate() {
 		return createDate;
 	}

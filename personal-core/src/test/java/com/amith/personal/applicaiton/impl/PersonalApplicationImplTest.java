@@ -7,7 +7,7 @@ import com.amith.personal.AbstractIntegrationTest;
 import com.amith.personal.domain.Dictionary;
 import com.amith.personal.domain.DictionaryCategory;
 
-public class PersonalApplicationImpl extends AbstractIntegrationTest {
+public class PersonalApplicationImplTest extends AbstractIntegrationTest {
 
 	@Test
 	public void testSaveAndRemoveEntity() {
