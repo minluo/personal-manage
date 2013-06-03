@@ -168,6 +168,11 @@
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
 				<artifactId>spring-orm</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
@@ -225,6 +230,11 @@
 			    <groupId>org.slf4j</groupId>
 			    <artifactId>slf4j-log4j12</artifactId>
 			    <version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+				<version>1.7.1</version>
 			</dependency>
 			<dependency>
 			    <groupId>${jdbc.groupId}</groupId>
@@ -342,6 +352,7 @@
 		<module>personal-notice</module>
 		<module>personal-webapp</module>
 		<module>personal-selenium-test</module>
+		<module>personal-process</module>
 	</modules>
 	
 </project>

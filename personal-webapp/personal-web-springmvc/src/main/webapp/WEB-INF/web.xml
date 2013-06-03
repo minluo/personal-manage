@@ -4,10 +4,11 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5" metadata-complete="true">
 	
-	<!-- <display-name>personal-manage</display-name>
+	<display-name>personal-manage</display-name>
+	
 	<context-param>
 		<param-name>webAppRootKey</param-name>
-		<param-value>personal</param-value>
+		<param-value>personal-manage</param-value>
 	</context-param>
 	<context-param>
 		<param-name>contextClass</param-name>
@@ -15,7 +16,7 @@
 	</context-param>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>com.amith.personal.spring</param-value>
+		<param-value>com.amith.personal.webapp.spring</param-value>
 	</context-param>
 	
 	<filter>
@@ -42,8 +43,23 @@
 
 	<listener>
 		<listener-class>com.amith.spring.listener.AmithContextLoaderListener</listener-class>
-	</listener> -->
+	</listener>
 
+	<!-- Spring MVC Servlet -->
+	<servlet>
+		<servlet-name>springServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath*:spring-mvc.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
 	<welcome-file-list>
 		<welcome-file>login.jsp</welcome-file>
 	</welcome-file-list>

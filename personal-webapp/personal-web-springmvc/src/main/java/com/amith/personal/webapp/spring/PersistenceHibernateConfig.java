@@ -16,7 +16,9 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import com.amith.domain.EntityRepository;
 import com.amith.hibernate.EntityRepositoryHibernate;
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 
+@SuppressWarnings("unused")
 @Configuration
 public class PersistenceHibernateConfig {
 
@@ -75,7 +77,7 @@ public class PersistenceHibernateConfig {
 	public LocalSessionFactoryBean sessionFactory() {
 		LocalSessionFactoryBean result = new LocalSessionFactoryBean();
 		result.setDataSource(dataSource());
-		result.setPackagesToScan(new String[] { "com.dayatang.sms.domain" });
+		result.setPackagesToScan(new String[] { "com.amith.personal.domain" });
 		result.setHibernateProperties(hibernateProperties());
 		//result.setEventListeners(initEventListeners());
 		return result;

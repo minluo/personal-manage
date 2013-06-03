@@ -16,7 +16,7 @@
 
     <!-- 属性替换 -->
 	<context:property-placeholder
-		location="classpath*:jdbc.properties, classpath*:conf.properties" />
+		location="classpath*:jdbc.properties" />
 
 	<!-- 国际化消息 -->
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
@@ -35,15 +35,16 @@
 
 	<aop:config>
 		<aop:pointcut id="repositoryOperation"
-			expression="execution(* com.dayatang.domain.EntityRepository.*(..))" />
+			expression="execution(* com.amith.domain.EntityRepository.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="repositoryOperation" />
 	</aop:config>
 
 	<aop:config>
 		<aop:pointcut id="appOperation"
-			expression="execution(* com.dayatang.sms.application.SmsApplication.*(..))" />
+			expression="execution(* com.amith.personal.application.PersonalApplication.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="appOperation" />
 	</aop:config>
 	
+	<bean id="personalApplication" class="com.amith.personal.application.impl.PersonalApplicationImpl" />
 	
 </beans>

@@ -1,5 +1,7 @@
 package com.amith.personal.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -8,6 +10,8 @@ import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+
+import com.amith.query.QueryObject;
 
 /**
  * 字典实体,用于自定义数据
@@ -35,6 +39,10 @@ public class Dictionary extends PersonalAggregateRootEntity {
 
 	public Dictionary() {}
 
+	public static List<Dictionary> findByCategory(DictionaryCategory category) {
+		return getRepository().find(QueryObject.create(Dictionary.class).eq("category", category));
+	}
+	
 	@Column(nullable = false)
 	public String getText() {
 		return text;
