@@ -18,8 +18,8 @@
 			<artifactId>provider-spring</artifactId>
 		</dependency>
 		<dependency>
-		    <groupId>com.amith</groupId>
-		    <artifactId>repository-hibernate</artifactId>
+			<groupId>com.amith</groupId>
+			<artifactId>repository-hibernate</artifactId>
 		</dependency>
 
 		<!-- PERSONAL-MANAGE -->
@@ -38,7 +38,7 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>c3p0</groupId>
 			<artifactId>c3p0</artifactId>
@@ -52,7 +52,21 @@
 			<groupId>${jdbc.groupId}</groupId>
 			<artifactId>${jdbc.artifactId}</artifactId>
 			<version>${jdbc.version}</version>
-		</dependency>		
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.2</version>
+			<scope>provided</scope>
+		</dependency>
+
 	</dependencies>
 
 	<properties>

@@ -1,5 +1,6 @@
 ﻿<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE dataset SYSTEM "dataset.dtd">
 <dataset>
+    <users id="1" version="0" username="kaka" password="7c4a8d09ca3762af61e59520943dc26494f8941b" create_date="2013-06-06 00:00:00" email="kaka@kaka.com" mobile="15913145477" activated="1" usabled="1"/>
 	<dictionaries id="1" version="0" text="家用" category="EXPENDITURE" sort_num="100" />
 </dataset>
