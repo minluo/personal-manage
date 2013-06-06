@@ -22,16 +22,9 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-<!-- 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"
 		p:messageConverters-ref="messageConverters"></bean>
 
-	<util:list id="messageConverters">
-		<bean class="org.springframework.http.converter.BufferedImageHttpMessageConverter" />
-		<bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
-		<bean class="org.springframework.http.converter.StringHttpMessageConverter" />
-		<bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
-	</util:list>
+	<bean id="messageConverters" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
 
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
- -->
 </beans>

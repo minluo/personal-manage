@@ -15,8 +15,7 @@
 		http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
     <!-- 属性替换 -->
-	<context:property-placeholder
-		location="classpath*:jdbc.properties" />
+	<context:property-placeholder location="classpath*:jdbc.properties" />
 
 	<!-- 国际化消息 -->
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
@@ -24,7 +23,7 @@
 		<property name="cacheSeconds" value="10" />
 	</bean>
 
-	<!-- 事务配置。目前拦截应用层方法。考虑改为拦截UI层的Action方法 -->
+	<!-- 事务配置。目前拦截应用层方法 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<tx:method name="get*" read-only="true" propagation="REQUIRED"/>

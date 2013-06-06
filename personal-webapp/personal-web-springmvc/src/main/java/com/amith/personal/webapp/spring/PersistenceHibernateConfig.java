@@ -79,7 +79,6 @@ public class PersistenceHibernateConfig {
 		result.setDataSource(dataSource());
 		result.setPackagesToScan(new String[] { "com.amith.personal.domain" });
 		result.setHibernateProperties(hibernateProperties());
-		//result.setEventListeners(initEventListeners());
 		return result;
 	}
 
