@@ -32,6 +32,29 @@
 		
 	</repositories>
 	
+	<pluginRepositories>
+		<pluginRepository>
+			<id>dayatang-releases</id>
+			<url>http://www.dayatang.com/nexus/content/groups/public-release</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>dayatang-snapshots</id>
+			<url>http://www.dayatang.com/nexus/content/groups/public-snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+	
 	<properties>
 	    
 	    <!-- APPLICATION -->
