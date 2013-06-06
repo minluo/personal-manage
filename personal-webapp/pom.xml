@@ -11,42 +11,63 @@
 	<packaging>pom</packaging>
 
 	<dependencies>
-	    
-	    <!-- DDD -->
-	    <dependency>
-	        <groupId>com.amith</groupId>
-	        <artifactId>provider-spring</artifactId>
-	    </dependency>
-	    <dependency>
-	        <groupId>com.amith</groupId>
-	        <artifactId>repository-hibernate</artifactId>
-	    </dependency>
 
-	    <!-- PERSONAL-MANAGE -->
-	    <dependency>
-	        <groupId>com.amith.personal</groupId>
-	        <artifactId>personal-core</artifactId>
-	        <version>1.0-SNAPSHOT</version>
-	    </dependency>
-	    <dependency>
-	        <groupId>com.amith.personal</groupId>
-	        <artifactId>personal-security</artifactId>
-	        <version>1.0-SNAPSHOT</version>
-	    </dependency>
-	    
+		<!-- DDD -->
+		<dependency>
+			<groupId>com.amith</groupId>
+			<artifactId>provider-spring</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>com.amith</groupId>
+		    <artifactId>repository-hibernate</artifactId>
+		</dependency>
+
+		<!-- PERSONAL-MANAGE -->
+		<dependency>
+			<groupId>com.amith.personal</groupId>
+			<artifactId>personal-core</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.amith.personal</groupId>
+			<artifactId>personal-security</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>c3p0</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>0.9.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>${jdbc.groupId}</groupId>
+			<artifactId>${jdbc.artifactId}</artifactId>
+			<version>${jdbc.version}</version>
+		</dependency>		
 	</dependencies>
-	
+
 	<properties>
-	    <dbunit.data.file>src/test/resources/sample-data.xml</dbunit.data.file>
+		<dbunit.data.file>src/test/resources/sample-data.xml</dbunit.data.file>
+		<jdbc.url><![CDATA[jdbc:h2:${basedir}/target/${db.name}]]></jdbc.url>
+		<sql.dir>${basedir}/target/test-classes/sql/${db.type}</sql.dir>
 	</properties>
-	
+
 	<build>
 		<finalName>personal-manage</finalName>
 		<plugins>
-			<!--<plugin>
-				<groupId>org.codehaus.mojo</groupId>
+			<plugin>
+				<groupId>com.dayatang.maven.mojo</groupId>
 				<artifactId>hibernate3-maven-plugin</artifactId>
-				<version>2.2</version>
+				<version>2.7</version>
 				<configuration>
 					<components>
 						<component>
@@ -87,15 +108,15 @@
 					<dependency>
 						<groupId>org.hibernate</groupId>
 						<artifactId>hibernate-validator</artifactId>
-						<version>4.2.0.Final</version>
+						<version>4.3.1.Final</version>
 					</dependency>
 				</dependencies>
 			</plugin>
 			<plugin>
-			    <groupId>org.codehaus.mojo</groupId>
-			    <artifactId>dbunit-maven-plugin</artifactId>
-			    <version>1.0-beta-3</version>
-			    <configuration>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>dbunit-maven-plugin</artifactId>
+				<version>1.0-beta-3</version>
+				<configuration>
 					<dataTypeFactoryName>${dbunit.dataTypeFactoryName}</dataTypeFactoryName>
 					<driver>${jdbc.driverClassName}</driver>
 					<url>${jdbc.url}</url>
@@ -135,8 +156,8 @@
 						<version>${jdbc.version}</version>
 					</dependency>
 				</dependencies>
-			</plugin> -->
-			
+			</plugin>
+
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
@@ -158,6 +179,21 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>h2</id>
+			<properties>
+				<jdbc.url><![CDATA[jdbc:h2:${basedir}/target/${db.name}]]></jdbc.url>
+			</properties>
+		</profile>
+		<profile>
+			<id>mysql</id>
+			<properties>
+				<jdbc.url><![CDATA[jdbc:mysql://${db.host}:${db.port}/${db.name}?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=utf-8]]></jdbc.url>
+			</properties>
+		</profile>
+	</profiles>
 
 	<modules>
 		<module>personal-web-struts2</module>
