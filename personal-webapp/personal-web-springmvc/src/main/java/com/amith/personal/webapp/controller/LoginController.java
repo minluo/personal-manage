@@ -11,7 +11,6 @@ import com.amith.personal.UserNotActivatedException;
 import com.amith.personal.UserNotFoundException;
 import com.amith.personal.UserUnusableException;
 import com.amith.personal.domain.User;
-import com.amith.personal.webapp.dto.ResultDto;
 import com.amith.personal.webapp.dto.ResultMsgDto;
 
 /**
@@ -34,6 +33,7 @@ public class LoginController extends BaseController {
 		String msg = null;
 		try {
 			User user = securityApplication.login(username, password);
+			putDataToSession(request, USERNAME, user.getUsername());
 		} catch (UserNotFoundException e) {
 			msg = USERNAME_NOTEXIST;
 		} catch (UserNotActivatedException e) {

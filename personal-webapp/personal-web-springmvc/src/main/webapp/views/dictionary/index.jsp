@@ -12,15 +12,14 @@
 		<jsp:include page="/views/common/header.jsp" />
 		<div class="page-header">
 			<div class="page-header-content">
-			    <h2>数据字典</h2>
-				<a href="javascript:window.history.go(-1);" class="back-button big page-back"></a>
+			    <h1>数据字典<small><a href="">添加</a></small></h1>
+				<a href="javascript:window.history.go(-1);" class="back-button big page-back" title="返回"></a>
 			</div>
 		</div>
 
         <div class="page-region">
             <div class="page-region-content">
                 <div class="span10">
-
 	                <table class="hovered striped">
 	                    <thead>
 	                        <tr>
@@ -29,20 +28,20 @@
 	                            <th>排序</th>
 	                        </tr>
 	                    </thead>
-	
 	                    <tbody>
 	                        <tr><td>支出</td><td>家用</td><td>100</td></tr>
 	                        <tr><td>支出</td><td>家用</td><td>100</td></tr>
 	                        <tr><td>支出</td><td>家用</td><td>100</td></tr>
 	                        <tr><td>支出</td><td>家用</td><td>100</td></tr>
 	                    </tbody>
-	
 	                </table>
-
             	</div>
             </div>
         </div>
+        <jsp:include page="/views/common/footer.jsp" />
     </div>
-
+	
+	
+	
 </body>
 </html>

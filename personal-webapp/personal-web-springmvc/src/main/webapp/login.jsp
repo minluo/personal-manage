@@ -40,7 +40,7 @@
                 </div>
                 <br>
 				<div class="input-control text span6 as-block" style="margin: auto;">
-    				 <input type="button" value="登录" id="loginBtu"/>
+    				 <input type="submit" value="登录" id="loginBtu"/>
                 </div>
 			</div>
 		</div>
@@ -51,16 +51,31 @@
 		
 		$(function(){
 			$('#loginBtu').click(function(){
-				var username = $('#username').val();
-				var password = $('#password').val();
-				var url = 'login?username=' + username + '&password=' + password;
-				$.post(url, null, function(data){
-					
-				}, 'json');
+				login();
 			});
 		});
 	
-	
+		function login() {
+			var username = $('#username').val();
+			var password = $('#password').val();
+			var url = 'login?username=' + username + '&password=' + password;
+			$.post(url, null, function(data){
+				var result = data.result;
+				if (data.result) {
+					document.location.href = '<%=basePath %>views/index.jsp';
+				} else {
+					alert(data.msg);
+				}
+			}, 'json');
+		}
+		
+		document.onkeydown = function(event){ 
+	        e = event ? event :(window.event ? window.event : null); 
+	        if(e.keyCode==13){ 
+	        	login();
+	        } 
+	    }
+		
 	</script>
 	
 </body>
