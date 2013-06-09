@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.amith.personal.domain.Dictionary;
+import com.amith.personal.domain.DictionaryCategory;
 import com.amith.personal.webapp.controller.BaseController;
 
 /**
@@ -19,8 +20,11 @@ import com.amith.personal.webapp.controller.BaseController;
 @RequestMapping(value = "/dictionary/")
 public class DictionaryController extends BaseController {
 
-	@RequestMapping(value = "findall")
-	public @ResponseBody List<Dictionary> findAll() {
+	@RequestMapping(value = "findByCategory")
+	public @ResponseBody List<Dictionary> findByCategory(String category) {
+		if (isNotNull(category)) {
+			return Dictionary.findByCategory(DictionaryCategory.valueOf(category));
+		}
 		return Dictionary.findAll(Dictionary.class);
 	}
 	

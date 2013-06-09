@@ -58,7 +58,7 @@
 		function login() {
 			var username = $('#username').val();
 			var password = $('#password').val();
-			var url = 'login?username=' + username + '&password=' + password;
+			var url = '<%=basePath %>login?username=' + username + '&password=' + password;
 			$.post(url, null, function(data){
 				var result = data.result;
 				if (data.result) {
